@@ -1,0 +1,25 @@
+identity :
+  name : ksai-dify-plugin-sql-validator
+  author : kernelstudio
+  label :
+    en_US : KSAI SQL Validator
+    zh_Hans : KSAI SQL合法验证
+description :
+  human :
+    en_US : KSAI SQL Validator
+    zh_Hans : KSAI验证是否为合法的SQL
+  llm : KSAI SQL Validator
+parameters :
+  - name : sql
+    type : string
+    required : true
+    form : llm
+    label :
+      en_US : Query SQL
+      zh_Hans : SQL查询语句
+    human_description :
+      en_US : Query SQL
+      zh_Hans : SQL查询语句
+extra :
+  python :
+    source : tools/ksai-dify-plugin-sql-validator.py

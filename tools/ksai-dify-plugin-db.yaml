@@ -1,0 +1,161 @@
+identity :
+  name : ksai-dify-plugin-db
+  author : kernelstudio
+  label :
+    en_US : KSAI Database Query
+    zh_Hans : KSAI数据库查询
+description :
+  human :
+    en_US : KSAI Database Query
+    zh_Hans : KSAI数据库查询
+  llm : KSAI Database Query
+parameters :
+  - name : type
+    type : select
+    required : true
+    default : "mysql"
+    form : llm
+    label :
+      en_US : Database type
+      zh_Hans : 数据库类型
+    human_description :
+      en_US : Database type, mysql, oracle, postgresql or mssql.
+      zh_Hans : 数据库类型
+    options :
+      - value : mysql
+        label :
+          en_US : MySQL
+          zh_Hans : MySQL
+      - value : oracle
+        label :
+          en_US : Oracle
+          zh_Hans : Oracle
+      - value : postgresql
+        label :
+          en_US : PostgreSQL
+          zh_Hans : PostgreSQL
+      - value : mssql
+        label :
+          en_US : Microsoft SQL Server
+          zh_Hans : Microsoft SQL Server
+  - name : host
+    type : string
+    required : true
+    default : "localhost"
+    form : llm
+    label :
+      en_US : Database Host
+      zh_Hans : 数据库地址
+    human_description :
+      en_US : Database hostname or IP address
+      zh_Hans : 数据库的主机名或IP地址
+  - name : port
+    type : number
+    required : false
+    form : llm
+    default : "3306"
+    label :
+      en_US : Port
+      zh_Hans : 数据库的端口
+    human_description :
+      en_US : Database port
+      zh_Hans : 数据库的端口
+  - name : username
+    type : string
+    required : true
+    form : llm
+    label :
+      en_US : Username
+      zh_Hans : 数据库用户名
+    human_description :
+      en_US : Database username
+      zh_Hans : 数据库用户名
+  - name : password
+    type : secret-input
+    required : true
+    form : llm
+    label :
+      en_US : Password
+      zh_Hans : 数据库密码
+    human_description :
+      en_US : Database password
+      zh_Hans : 数据库密码
+  - name : database
+    type : string
+    required : false
+    form : llm
+    label :
+      en_US : Database name
+      zh_Hans : 数据库名称
+    human_description :
+      en_US : Database name
+      zh_Hans : 数据库名称
+  - name : properties
+    type : string
+    required : false
+    form : llm
+    label :
+      en_US : Database properties
+      zh_Hans : 数据库附加属性
+    human_description :
+      en_US : Database properties
+      zh_Hans : 数据库附加属性
+  - name : placeholder
+    type : string
+    default : '-'
+    required : false
+    form : llm
+    label :
+      en_US : Empty placeholder
+      zh_Hans : 空数据占位符
+    human_description :
+      en_US : Empty placeholder,Default -
+      zh_Hans : 空数据占位符,默认为-
+  - name : date_format
+    type : string
+    default : '%Y-%m-%d %H:%M:%S'
+    required : false
+    form : llm
+    label :
+      en_US : Date format
+      zh_Hans : 日期格式化
+    human_description :
+      en_US : Date format,Default %Y-%m-%d %H:%M:%S
+      zh_Hans : 日期格式化, 默认为 %Y-%m-%d %H:%M:%S
+  - name : sql
+    type : string
+    required : true
+    form : llm
+    label :
+      en_US : Query SQL
+      zh_Hans : SQL查询语句
+    human_description :
+      en_US : Query SQL
+      zh_Hans : SQL查询语句
+  - name : output_format
+    type : select
+    required : true
+    default : markdown
+    form : form
+    label :
+      en_US : Output format
+      zh_Hans : 输出格式
+    human_description :
+      en_US : Output format
+      zh_Hans : 输出格式
+    options :
+      - value : markdown
+        label :
+          en_US : Markdown
+          zh_Hans : Markdown
+      - value : json
+        label :
+          en_US : JSON Objects
+          zh_Hans : JSON对象
+      - value : json_string
+        label :
+          en_US : JSON String
+          zh_Hans : JSON字符串
+extra :
+  python :
+    source : tools/ksai-dify-plugin-db.py

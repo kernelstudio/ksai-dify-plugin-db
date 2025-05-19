@@ -1,0 +1,19 @@
+identity:
+  author: kernelstudio
+  name: ksai-dify-plugin-db
+  label:
+    en_US: KSAI Database
+    zh_Hans: KSAI数据库
+  description:
+    en_US: KSAI Database
+    zh_Hans: KSAI数据库
+  icon: icon.svg
+tools:
+  - tools/ksai-dify-plugin-db.yaml
+  - tools/ksai-dify-plugin-sql-validator.yaml
+tags:
+  - search
+  - utilities
+extra:
+  python:
+    source: provider/ksai-dify-plugin-db.py
