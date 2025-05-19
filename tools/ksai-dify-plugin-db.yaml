@@ -55,7 +55,7 @@ parameters :
     form : llm
     default : "3306"
     label :
-      en_US : Port
+      en_US : Database port
       zh_Hans : 数据库的端口
     human_description :
       en_US : Database port
@@ -65,7 +65,7 @@ parameters :
     required : true
     form : llm
     label :
-      en_US : Username
+      en_US : Database username
       zh_Hans : 数据库用户名
     human_description :
       en_US : Database username
@@ -75,7 +75,7 @@ parameters :
     required : true
     form : llm
     label :
-      en_US : Password
+      en_US : Database password
       zh_Hans : 数据库密码
     human_description :
       en_US : Database password
