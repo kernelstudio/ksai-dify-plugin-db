@@ -59,6 +59,10 @@ class DatabaseConfig:
         )
 
     @property
+    def engine(self):
+        return create_engine(self.url, pool_size=100, pool_recycle=36)
+
+    @property
     def driver(self):
         return driver_mapping[self.database_type]
 
@@ -93,6 +97,14 @@ class DatabaseExecutor:
     def create_from_config(config: dict):
         return DatabaseExecutor(DatabaseConfig.from_dict(config))
 
+    def test_connection(self):
+        try:
+            connection = self.config.engine.connect()
+            connection.close()
+            return True
+        except Exception as e:
+            raise ValueError(f"Could not connect to database: {e}")
+
     def select(self, sql: str, placeholder: str = '-', date_format='%Y-%m-%d %H:%M:%S'):
 
         if is_single_select_query(sql) is False:
@@ -104,11 +116,9 @@ class DatabaseExecutor:
         if has_text(date_format) is False:
             date_format = '%Y-%m-%d %H:%M:%S'
 
-        engine = create_engine(self.config.url, pool_size=100, pool_recycle=36)
-
         query_sql = sql.replace('%', '%%')
 
-        df = pd.read_sql_query(sql=query_sql, con=engine, parse_dates=date_format)
+        df = pd.read_sql_query(sql=query_sql, con=self.engine, parse_dates=date_format)
         df = df.fillna(placeholder)
 
         results = []
