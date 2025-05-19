@@ -82,7 +82,7 @@ parameters :
       zh_Hans : 数据库密码
   - name : database
     type : string
-    required : false
+    required : true
     form : llm
     label :
       en_US : Database name
