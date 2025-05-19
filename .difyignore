@@ -5,6 +5,7 @@ __pycache__/
 
 release/
 tests/
+tmp/
 
 # Distribution / packaging
 .Python
