@@ -118,7 +118,7 @@ class DatabaseExecutor:
 
         query_sql = sql.replace('%', '%%')
 
-        df = pd.read_sql_query(sql=query_sql, con=self.engine, parse_dates=date_format)
+        df = pd.read_sql_query(sql=query_sql, con=self.config.engine, parse_dates=date_format)
         df = df.fillna(placeholder)
 
         results = []
